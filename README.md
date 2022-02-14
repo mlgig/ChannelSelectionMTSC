@@ -18,6 +18,13 @@ Channel selection is applied as a pre-processing step before training state-of-t
 
 ![image](https://user-images.githubusercontent.com/20501023/153868786-762a0a32-15f6-448b-8180-fd5daec28d7e.png)
 
-## Running instructions
+### Case Study 1: Sythetic Datasets
 
+![image](https://user-images.githubusercontent.com/20501023/153869395-ef01346b-7496-4063-9626-070b95c4b004.png)
+
+### Case Study 2: Military Press Dataset
+![image](https://user-images.githubusercontent.com/20501023/153869615-bb7c2b0b-989c-42c7-95f6-171c960f3d40.png)
+
+
+## Running instructions
 ## Military Press Dataset
