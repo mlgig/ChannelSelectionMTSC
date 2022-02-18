@@ -9,23 +9,15 @@ sys.path.append("..")
 
 import numpy as np
 from sktime.utils.data_io import load_from_tsfile_to_dataframe
-#from .calculate_centroid import centroid
-#from .utils import *
 from operator import truediv 
 from sktime.utils.data_processing import from_nested_to_3d_numpy, from_3d_numpy_to_nested
 from sklearn.neighbors import NearestCentroid
-from src.med_cent import median_centroid as MC
 from sklearn.preprocessing import LabelEncoder
 from scipy.signal import savgol_filter
 from sklearn import preprocessing
 from scipy.fftpack import fft, ifft
 from  scipy.stats import median_abs_deviation as mad
-#from fastdtw import fastdtw
 
-dcs = {0: 'Nose',1: 'Neck',2: 'RShoulder',3: 'RElbow',4: 'RWrist',5: 'LShoulder',6: 'LElbow',7: 'LWrist',
-      8: 'MidHip',9: 'RHip',10: 'RKnee',11: 'RAnkle',12: 'LHip',13: 'LKnee',14: 'LAnkle', 
-      15:'REye',16: 'LEye',17: 'REar',18: 'LEar',19: 'LBigToe',20: 'LSmallToe',21: 'LHeel',22: 'RBigToe',
-      23: 'RSmallToe',24: 'RHeel'}
 
 class shrunk_centroid:
 
@@ -226,20 +218,10 @@ class shrunk_centroid:
 if __name__ == "__main__":
     
     train = "./MP/FullUnnormalized25/TRAIN_default_X.ts"
-    #jump_dataset = ['FullUnnormalized', 'Normalized', 'Unnormalized']
-    #dataset = ['DuckDuckGeese', 'FaceDetection', 'MotorImagery', 'PEMS-SF']
     dataset = ['Cricket']
     for item in dataset:
         print(item)
-        #print(f"./data/{item}/{item}_TRAIN.ts")
-        #train_x, y = load_from_tsfile_to_dataframe(f"./data/{item}/{item}_TRAIN.ts",return_separate_X_and_y=True)
         train_x, y = load_from_tsfile_to_dataframe(train, return_separate_X_and_y=True)
-        #train_x = load_from_tsfile_to_dataframe("./data/Cricket/Cricket_TRAIN.ts",return_separate_X_and_y=False)
-        #print(train_x.head())
         obj = shrunk_centroid(0)
         df_s = obj.create_centroid(train_x.copy(), y, center="mad")
-        #obj1 = shrunk_centroid(1000)
-        #df_s1 = obj1.create_centroid(train_x.copy(), y, center="madshrink")
-        #print(df_s)
-        #print(df_s.iloc[:, 0]-df_s1.iloc[:, 0])
         break

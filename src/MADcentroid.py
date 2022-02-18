@@ -1,1 +1,0 @@
-# Noise removal technqiues using median absolute deviation
