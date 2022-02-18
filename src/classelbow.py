@@ -35,29 +35,22 @@ class ElbowPair(TransformerMixin, BaseEstimator):
         self.center = center
         self.mc = mc
         self.fft = fft
-        #print(self.shrinkage)
         
-
     def _countFrequency(self, arr):
         return collections.Counter(arr)
 
     def _create_rankDictionary(self, arr, dic):
-        #print(arr)
-        #print(dic)
         for element in arr:
             dic[element] = arr.index(element)
         print(dic)
 
-    def _rank_ecs(self):
+    def _rank(self):
         all_index = self.distance_frame.sum(axis=1).sort_values(ascending=False).index    
-        #print(self.distance_frame.sum(axis=1).sort_values(ascending=False))
-        print(list(set(all_index)-set(self.relevant_dims)))
-        print(self.distance_frame.sum(axis=1))
         series = self.distance_frame.sum(axis=1)
         series.drop(index=list(set(all_index)-set(self.relevant_dims)), inplace=True)
         return series.sort_values(ascending=False).index
         
-    def _rank(self):    
+    def _rank_frequ(self):    
         
         channel_dist={}
         channel_frequency = Counter(self.relevant_dims)
@@ -76,17 +69,11 @@ class ElbowPair(TransformerMixin, BaseEstimator):
         return df.sort_values(by=['frequency','distance'], ascending=False).channel.tolist()
 
     def fit(self, X, y):
-        #d = {0: 'Nose',1: 'Neck',2: 'RShoulder',3: 'RElbow',4: 'RWrist',5: 'LShoulder',6: 'LElbow',7: 'LWrist', 8: 'MidHip',9: 'RHip',10: 'RKnee',11: 'RAnkle',12: 'LHip',13: 'LKnee',14: 'LAnkle', 15:'REye',16: 'LEye',17: 'REar',18: 'LEar',19: 'LBigToe',20: 'LSmallToe',21: 'LHeel',22: 'RBigToe', 23: 'RSmallToe',24: 'RHeel'}
         
         centroid_obj = shrunk_centroid(self.shrinkage)
         self.centroid_frame = centroid_obj.create_centroid(X.copy(),y, center=self.center, mean_centering=self.mc, _fft=self.fft) # Centroid created here
         obj = distance_matrix(distance = self.distancefn)
         self.distance_frame = obj.distance(self.centroid_frame.copy()) # Distance matrix created here
-        #print("CCCC:", self.centroid_frame.shape[1])
-        #self.distance_frame = self.centroid_frame.iloc[:,:-1].applymap(norm) #TODO: L2 Norm
-
-        #self.distance_frame = self.distance_frame.T
-        #self.distance_frame.reset_index(drop=True, inplace=True)
 
         
         all_chs = np.empty(self.centroid_frame.shape[1] - 1) # -1 for removing class columsn
@@ -95,44 +82,23 @@ class ElbowPair(TransformerMixin, BaseEstimator):
         all_dis = np.zeros(self.centroid_frame.shape[1]- 1)
         self.relevant_dims = []
         self.relevant_dis = []
-        #for pairdistance in newdf.iteritems():
+        
+
         for pairdistance in self.distance_frame.iteritems():
             dic = {}
             distance = pairdistance[1].sort_values(ascending=False).values
-            indices = pairdistance[1].sort_values(ascending=False).index
-            #print(pairdistance[0]) 
+            indices = pairdistance[1].sort_values(ascending=False).index 
             chs_dis = detect_knee_point(distance, indices)           
             chs = chs_dis[0]
             dis = chs_dis[1]
-            #dis = chs_dis[1]
-            #print([(d[item], item) for item in chs])
-            #for chnl, dist in zip(chs, dis):
-            #    all_dis[chnl]= all_dis[chnl] + dist 
-            #    chs_freq[chnl] = chs_freq[chnl] + 1 
-
-            #print(all_dis) 
-            #print("-"*10)
-            #print(chs) # Uncomment for printing channels for centroid pair
-            #dic = {item: chs.index(item) for item in chs} # create dictionary for each centroid pair
-            #print(dic)
-            #big_dict.append(dic)
             self.relevant_dims.extend(chs)
-            #self.relevant_dis.extend(dis)
-        #dims = self._countFrequency(self.relevant_dims)
-        #print(dict(dims))
-        #print("Final rank: ", list(all_dis))
-        #print("Freq", list(chs_freq))
-        #self.rank = [item for item, keys in Counter(self.relevant_dims).most_common()]
-        self.rank = self._rank() 
-        #print(self._rank())
-        self.relevant_dims = list(set(self.relevant_dims))#[item for item in dims if dims.get(item)>1] # 
 
+        self.rank = self._rank() 
+        self.relevant_dims = list(set(self.relevant_dims))
         return self
 
     
     def transform(self, X):
-        #print(self.relevant_dims)
-        #print("Dimension used: ", X.iloc[:, self.relevant_dims].shape[1]/X.shape[1])
         return X.iloc[:, self.relevant_dims]
 
 
