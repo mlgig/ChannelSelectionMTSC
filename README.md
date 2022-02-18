@@ -27,6 +27,7 @@ Channel selection is applied as a pre-processing step before training state-of-t
 
 
 ## Running instructions
-
+Look into examples
 
 ## Military Press Dataset
+Download [here](https://drive.google.com/drive/folders/1nrdNewziO3BTHWZOSHioS24Wcdg3qJcK?usp=sharing)
