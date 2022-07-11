@@ -31,3 +31,42 @@ Look into examples
 
 ## Military Press Dataset
 Download [here](https://drive.google.com/drive/folders/1nrdNewziO3BTHWZOSHioS24Wcdg3qJcK?usp=sharing)
+
+## Citation
+
+Please use below two papers to cite the work.
+
+```
+@article{dhariyal2022scalable,
+  title={Scalable Classifier-Agnostic Channel Selection for Multivariate Time Series Classification},
+  author={Dhariyal, Bhaskar and Nguyen, Thach Le and Ifrim, Georgiana},
+  journal={arXiv preprint arXiv:2206.09274},
+  year={2022}
+}
+```
+
+
+```
+@inproceedings{dhariyal2021fast,
+  title={Fast Channel Selection for Scalable Multivariate Time Series Classification},
+  author={Dhariyal, Bhaskar and Nguyen, Thach Le and Ifrim, Georgiana},
+  booktitle={International Workshop on Advanced Analytics and Learning on Temporal Data},
+  pages={36--54},
+  year={2021},
+  organization={Springer}
+}
+```
+
+If you are using Military Press dataset, please cite:
+
+
+```
+@inproceedings{singh2021interpretable,
+  title={Interpretable classification of human exercise videos through pose estimation and multivariate time series analysis},
+  author={Singh, Ashish and Le, Binh Thanh and Nguyen, Thach Le and Whelan, Darragh and O’Reilly, Martin and Caulfield, Brian and Ifrim, Georgiana},
+  booktitle={International Workshop on Health Intelligence},
+  pages={181--199},
+  year={2021},
+  organization={Springer}
+}
+```
