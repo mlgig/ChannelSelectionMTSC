@@ -40,8 +40,8 @@ Please use below two papers to cite the work.
 @article{dhariyal2022scalable,
   title={Scalable Classifier-Agnostic Channel Selection for Multivariate Time Series Classification},
   author={Dhariyal, Bhaskar and Nguyen, Thach Le and Ifrim, Georgiana},
-  journal={arXiv preprint arXiv:2206.09274},
-  year={2022}
+  journal={Data Mining and Knowledge Discovery},
+  year={2023}
 }
 ```
 
