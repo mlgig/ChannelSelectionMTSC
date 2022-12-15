@@ -1,6 +1,6 @@
 # Scalable Classifier-Agnostic Channel Selection for Multivariate Time Series Classification
 
-Work under review
+Accepted for ECML2023, Journal Track
 
 ## Abstract:
 
