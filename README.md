@@ -37,11 +37,13 @@ Download [here](https://drive.google.com/drive/folders/1nrdNewziO3BTHWZOSHioS24W
 Please use below two papers to cite the work.
 
 ```
-@article{dhariyal2022scalable,
-  title={Scalable Classifier-Agnostic Channel Selection for Multivariate Time Series Classification},
-  author={Dhariyal, Bhaskar and Nguyen, Thach Le and Ifrim, Georgiana},
+@article{dhariyal2023scalable,
+  title={Scalable classifier-agnostic channel selection for multivariate time series classification},
+  author={Dhariyal, Bhaskar and Le Nguyen, Thach and Ifrim, Georgiana},
   journal={Data Mining and Knowledge Discovery},
-  year={2023}
+  pages={1--45},
+  year={2023},
+  publisher={Springer}
 }
 ```
 
