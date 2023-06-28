@@ -31,6 +31,10 @@ Channel selection is applied as a pre-processing step before training state-of-t
 ## Running instructions
 Look into examples
 
+## Implementation
+
+Aeon-toolkit : [ECS](https://www.aeon-toolkit.org/en/latest/api_reference/auto_generated/aeon.transformations.collection.channel_selection.ElbowClassSum.html), [ECP](https://www.aeon-toolkit.org/en/latest/api_reference/auto_generated/aeon.transformations.collection.channel_selection.ElbowClassPairwise.html)
+
 ## Military Press Dataset
 Download [here](https://drive.google.com/drive/folders/1nrdNewziO3BTHWZOSHioS24Wcdg3qJcK?usp=sharing)
 
