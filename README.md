@@ -1,3 +1,5 @@
+[**`Previous AALTD@ECML-2021`**](https://github.com/mlgig/Channel-Selection-MTSC)
+
 # Scalable Classifier-Agnostic Channel Selection for Multivariate Time Series Classification
 
 Accepted for ECML2023, Journal Track
